@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RestaurantMenu</title>
+
+    <!--Font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap" rel="stylesheet">
+
+    <!--Font awesome-->
+    <script src="https://kit.fontawesome.com/795c9781e5.js" crossorigin="anonymous"></script>
+
+
+    <!--Bootstrap script-->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+
+    <!--CSS sheet-->
+    <link rel="stylesheet" href="tourist.css" />
+</head>
+
+<body>
+    <section>
+        <!--Nav bar-->
+      <div>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+          <div class="container-fluid">
+            
+            <a class="navbar-brand" href="TourDeBandarban">TourDeBandarban</a>
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarNavAltMarkup"
+              aria-controls="navbarNavAltMarkup"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <div class="navbar-nav">
+                
+            </div>
+
+            
+          </div>
+          </div>
+        </nav>
+      </div>  
+    </section>
+
+    <section id="Menu">
+
+      <div class="about">
+      
+          <div class="container">
+
+            <h1 class="heading">Menu</h1>
+         
+            <div class="box-container">
+              <% if (data && data.length > 0) { %>
+                <% data.forEach(item => { %>
+                  <div class="box">
+                    <% if (item.image && item.image.contentType && item.image.image) { %>
+                      <div class="image">
+                        <img src="data:<%= item.image.contentType %>;base64,<%= item.image.image.toString('base64') %>" alt="">
+                      </div>
+                    <% } else { %>
+                      <div class="image">
+                        
+                        <img src="placeholder-image.jpg" alt="">
+                      </div>
+                    <% } %>
+                    <div class="content">
+                      <h3><%= item.name %></h3>
+                      <p>
+                         Price: <%= item.price %> <br>    
+                      </p>
+                      <div class="icons">
+                       <!--<span><i class="fas fa-calendar"></i> 21st May, 2022 </span>
+                        <span><i class="fas fa-user"></i> by admin</span> -->
+                      </div>
+                    </div>
+                  </div>
+                <% })%>
+              <% } else { %>
+                <div class="no-data">
+                  <p>No data available.</p>
+              </div>
+              <% } %>
+            </div>
+            
+             
+         
+           <!--<div id="load-more"> load more </div> -->
+           
+         
+         </div>
+         
+  
+      </div>
+    </section>
+
+
+   
+    <footer id="footer">
+
+      <i class="social-icon fa-brands fa-facebook-f"></i>
+      <i class="social-icon fa-brands fa-twitter"></i>
+      <i class="social-icon fa-brands fa-instagram"></i>
+      <i class="social-icon fa-solid fa-envelope"></i>
+  
+      <p>© Copyright TourDeBandarban</p>
+      <p>All rights preserved</p>
+  
+    </footer>
+
+
+    <!--<script>
+
+      let loadMoreBtn = document.querySelector('#load-more');
+      let currentItem = 3;
+      
+      loadMoreBtn.onclick = () =>{
+         let boxes = [...document.querySelectorAll('.container .box-container .box')];
+         for (var i = currentItem; i < currentItem + 3; i++){
+            boxes[i].style.display = 'inline-block';
+         }
+         currentItem += 3;
+      
+         if(currentItem >= boxes.length){
+            loadMoreBtn.style.display = 'none';
+         }
+
+      }
+      
+      </script>-->
+      <script>
+        function redirectToMenu(restaurantName) {
+          window.location.href = "/resMenu?rname=" + encodeURIComponent(restaurantName);
+        }
+      </script>
+
+
+    
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.84.0">
+    <title>guideRegister</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sign-in/">
+
+    
+
+    <!-- Bootstrap -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+
+    
+    <!-- CSS -->
+    <link href="signin.css" rel="stylesheet"> 
+
+  </head>
+
+  <body class="text-center">
+    
+<main class="form-guideRegister">
+  <form action="/jhoomRegister" enctype="multipart/form-data" method="POST">
+    <h1 class="mb-3 fw-normal">Give information</h1>
+
+    <div class="form-floating">
+      <input type="text" class="form-control" id="floatingInput" name="nid" value="<%= data.nid %>">
+      <label for="floatingInput">Nid </label>
+    </div>
+    <div class="form-floating">
+      <input type="password" class="form-control" id="floatingPassword" name="password" value="<%= data.password %>">
+      <label for="floatingPassword">Password</label>
+    </div>
+    <div class="form-floating">
+      <input type="text" class="form-control" id="floatingInput" name="name" value="<%= data.name %>">
+      <label for="floatingInput">Name</label>
+    </div>
+    <div class="form-floating">
+        <input type="text" class="form-control" id="floatingInput" name="location" value="<%= data.location %>">
+        <label for="floatingInput">Location</label>
+    </div>
+    <div class="form-floating">
+        <input type="text" class="form-control" id="floatingInput" name="capacity" value="<%= data.capacity %>">
+        <label for="floatingInput">Total Capacity</label>
+    </div>
+    <div class="form-floating">
+        <input type="text" class="form-control" id="floatingInput" name="room" value="<%= data.room %>">
+        <label for="floatingInput">Total Rooms</label>
+    </div>
+    <div class="form-floating">
+        <input type="text" class="form-control" id="floatingInput" name="phone" value="<%= data.phone %>">
+        <label for="floatingInput">Phone</label>
+    </div>
+    
+    <div class="form-floating">
+        <input type="file" class="form-control" id="floatingInput" name="myImage" value="<%= data.filename%>">
+        <label for="floatingInput">Image</label>
+    </div>
+
+    <div class="checkbox mb-3">
+      
+    </div>
+    <button class="w-50 btn btn-lg btn-primary" type="submit"> Update info</button>
+    
+    <p class="mt-3 mb-3 text-muted">&copy; TourDeBandarban</p>
+  </form>
+</main>
+
+
+    
+  </body>
+</html>
