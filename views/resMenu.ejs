@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RestaurantMenu</title>
+    <title>Food Menu</title>
 
     <!--Font-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -47,6 +47,9 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
               <div class="navbar-nav">
+                <a class="nav-link" href="#"></a>
+                <a class="nav-link" href="#"></a>
+                <a class="nav-link" href="#"></a>
                 
             </div>
 
@@ -57,58 +60,59 @@
       </div>  
     </section>
 
-    <section id="Menu">
 
+    <section id="restaurant">
       <div class="about">
       
-          <div class="container">
+        <div class="container">
 
-            <h1 class="heading">Menu</h1>
-         
-            <div class="box-container">
-              <% if (data && data.length > 0) { %>
-                <% data.forEach(item => { %>
-                  <div class="box">
-                    <% if (item.image && item.image.contentType && item.image.image) { %>
-                      <div class="image">
-                        <img src="data:<%= item.image.contentType %>;base64,<%= item.image.image.toString('base64') %>" alt="">
-                      </div>
-                    <% } else { %>
-                      <div class="image">
-                        
-                        <img src="placeholder-image.jpg" alt="">
-                      </div>
-                    <% } %>
-                    <div class="content">
-                      <h3><%= item.name %></h3>
-                      <p>
-                         Price: <%= item.price %> <br>    
-                      </p>
-                      <div class="icons">
-                       <!--<span><i class="fas fa-calendar"></i> 21st May, 2022 </span>
-                        <span><i class="fas fa-user"></i> by admin</span> -->
-                      </div>
+          <h1 class="heading">Restaurants</h1>
+       
+          <div class="box-container">
+            <% if (data && data.length > 0) { %>
+              <% data.forEach(item => { %>
+                <div class="box">
+                  <% if (item.image && item.image.contentType && item.image.image) { %>
+                    <div class="image">
+                      <img src="data:<%= item.image.contentType %>;base64,<%= item.image.image.toString('base64') %>" alt="">
+                    </div>
+                  <% } else { %>
+                    <div class="image">
+                      <!-- If image data is not available, display a placeholder image or handle the case as needed -->
+                      <img src="placeholder-image.jpg" alt="">
+                    </div>
+                  <% } %>
+                  <div class="content">
+                    <h3><%= item.name %></h3>
+                    
+                    <p>
+                      Price: <%= item.price %>
+                      
+                    </p>
+
+                    
+                    <div class="icons">
+                     <!-- <span><i class="fas fa-calendar"></i> 21st May, 2022 </span>
+                      <span><i class="fas fa-user"></i> by admin</span> -->
                     </div>
                   </div>
-                <% })%>
-              <% } else { %>
-                <div class="no-data">
-                  <p>No data available.</p>
-              </div>
-              <% } %>
-            </div>
-            
-             
-         
-           <!--<div id="load-more"> load more </div> -->
+                </div>
+              <% })%>
+            <% } else { %>
+              <p>No data available.</p>
+            <% } %>
+          </div>
+          
            
+       
+         <!--<div id="load-more"> load more </div> -->
          
-         </div>
-         
-  
-      </div>
-    </section>
+       
+       </div>
+       
 
+    </div>
+    </section>
 
    
     <footer id="footer">
@@ -121,33 +125,9 @@
       <p>© Copyright TourDeBandarban</p>
       <p>All rights preserved</p>
   
-    </footer>
+    </footer>  
 
-
-    <!--<script>
-
-      let loadMoreBtn = document.querySelector('#load-more');
-      let currentItem = 3;
       
-      loadMoreBtn.onclick = () =>{
-         let boxes = [...document.querySelectorAll('.container .box-container .box')];
-         for (var i = currentItem; i < currentItem + 3; i++){
-            boxes[i].style.display = 'inline-block';
-         }
-         currentItem += 3;
-      
-         if(currentItem >= boxes.length){
-            loadMoreBtn.style.display = 'none';
-         }
-
-      }
-      
-      </script>-->
-      <script>
-        function redirectToMenu(restaurantName) {
-          window.location.href = "/resMenu?rname=" + encodeURIComponent(restaurantName);
-        }
-      </script>
 
 
     
