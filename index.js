@@ -29,9 +29,14 @@ const upload = multer({
 });
 
 //Landing Page
+app.get('/', (req, res) => {
+  res.render('TourDeBandarban');
+});
+
 app.get('/TourDeBandarban', (req, res) => {
   res.render('TourDeBandarban');
 });
+
 
 // Tourist 
 app.route('/signin')
