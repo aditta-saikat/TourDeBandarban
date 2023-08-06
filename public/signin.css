@@ -1,38 +1,49 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600&display=swap');
 
-body{
-    font-family: 'Montserrat', sans-serif;
+body {
     display: flex;
     align-items: center;
-    padding-top: 0px;
-    padding-bottom: 40px;
-    height: 100%;
-    background-image: url('/images/signin.jpg');
-    background-size: 100%;
-    
-}
-
-form{
+    justify-content: center;
+    padding: 40px;
+    min-height: 100vh;
+    background-image: url('images/signin.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover; 
+  }
+  
+  form {
     display: block;
-    margin-top: 3em;
-    background-color:white;
+    margin-top: 0em;
+    background-color: white;
     padding: 5%;
     border-radius: 5%;
-
-}
-
-.form-signin{
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+  }
+  
+  .form-signin {
     width: 100%;
     max-width: 350px;
     padding: 15px;
     margin: auto;
-    margin-top: 100px;
-}
-.form-guideRegister{
+    margin-top: 5%;
+  }
+
+  .form-guideRegister{
     width: 100%;
     max-width: 600px;
     padding: 0px;
     margin: auto;
-    margin-top: 0px;
-}
-
+    margin-top: 2px;
+  }
+  
+  
+  
+  @media (max-width: 576px) {
+    .form-signin {
+      max-width: 100%;
+      margin-top: 15%;
+    }
+  }
+  
+  
