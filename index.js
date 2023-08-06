@@ -239,7 +239,7 @@ app.route('/jhoomRegister')
       res.status(200).send("Jhoomghar registered successfully!");
     } catch (err) {
       console.log(err);
-      res.status(500).send("Failed to register the guide.");
+      res.status(500).send("Failed to register the Jhoomghar Manger.");
     }
   });
 
@@ -433,8 +433,11 @@ app.route('/resMenu')
   }
 });
 
+let port = process.env.PORT;
+if(port == null || port == ""){
+  port = 8080;
+}
 
-
-app.listen(8080, () => {
-  console.log('Server connected on port 8080');
+app.listen(port, () => {
+  console.log('Server has run successfully!');
 });
