@@ -25,7 +25,7 @@
   <body class="text-center">
     
 <main class="form-signin">
-  <form action="/jhoomSignup" method="post">
+  <form id="jhoomForm" action="/jhoomSignup" method="post">
     <h1 class="mb-3 fw-normal">Sign up</h1>
 
     <div class="form-floating">
@@ -40,13 +40,54 @@
     <div class="checkbox mb-3">
       
     </div>
-    <button class="w-100 btn btn-lg btn-primary" type="submit"> Sign up</button>
+    <button id="signupButton" class="w-100 btn btn-lg btn-primary" type="submit"> Sign up</button>
     <div class="text-center">
       <p class="mt-3"></a></p>
     </div>
     <p class="mt-3 mb-3 text-muted">&copy; TourDeBandarban</p>
   </form>
 </main>
+
+<script>
+  function showConfirmation(message) {
+    return window.confirm(message);
+  }
+
+  function showAlert(message) {
+    alert(message);
+  }
+
+  document.getElementById('signupButton').addEventListener('click', async () => {
+    const jhoomData = {
+      nid: document.getElementById('floatingInput').value,
+      password: document.getElementById('floatingPassword').value
+    };
+
+    const confirmationMessage = `Do you want to sign up with the provided information?\n\nNID: ${jhoomData.nid}`;
+    const isConfirmed = showConfirmation(confirmationMessage);
+
+    if (isConfirmed) {
+      try {
+        const formData = new FormData(document.getElementById('jhoomForm'));
+        const response = await fetch("/jhoomSignup", {
+          method: "POST",
+          body: formData,
+        });
+
+        if (response.ok) {
+          showAlert("Successfully signed up!"); 
+        } else {
+          showAlert("Failed to sign in. Please check your details and try again.");
+        }
+      } catch (err) {
+        showAlert("An error occurred while signing in. Please try again later.");
+        console.error(err);
+      }
+    }else {
+      showAlert("Sign up canceled."); 
+    }
+  });
+</script>
 
 
     

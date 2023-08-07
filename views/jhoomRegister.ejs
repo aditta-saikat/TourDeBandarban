@@ -25,7 +25,7 @@
   <body class="text-center">
     
 <main class="form-guideRegister">
-  <form action="/jhoomRegister" enctype="multipart/form-data" method="POST">
+  <form id="jhoomForm" action="/jhoomRegister" enctype="multipart/form-data" method="POST">
     <h1 class="mb-3 fw-normal">Give information</h1>
 
     <div class="form-floating">
@@ -37,39 +37,91 @@
       <label for="floatingPassword">Password</label>
     </div>
     <div class="form-floating">
-      <input type="text" class="form-control" id="floatingInput" name="name" value="<%= data.name %>">
+      <input type="text" class="form-control" id="floatingName" name="name" value="<%= data.name %>">
       <label for="floatingInput">Name</label>
     </div>
     <div class="form-floating">
-        <input type="text" class="form-control" id="floatingInput" name="location" value="<%= data.location %>">
+        <input type="text" class="form-control" id="floatingLocation" name="location" value="<%= data.location %>">
         <label for="floatingInput">Location</label>
     </div>
     <div class="form-floating">
-        <input type="text" class="form-control" id="floatingInput" name="capacity" value="<%= data.capacity %>">
+        <input type="text" class="form-control" id="floatingCapacity" name="capacity" value="<%= data.capacity %>">
         <label for="floatingInput">Total Capacity</label>
     </div>
     <div class="form-floating">
-        <input type="text" class="form-control" id="floatingInput" name="room" value="<%= data.room %>">
+        <input type="text" class="form-control" id="floatingRoom" name="room" value="<%= data.room %>">
         <label for="floatingInput">Total Rooms</label>
     </div>
     <div class="form-floating">
-        <input type="text" class="form-control" id="floatingInput" name="phone" value="<%= data.phone %>">
+        <input type="text" class="form-control" id="floatingPhone" name="phone" value="<%= data.phone %>">
         <label for="floatingInput">Phone</label>
     </div>
     
     <div class="form-floating">
-        <input type="file" class="form-control" id="floatingInput" name="myImage" value="<%= data.filename%>">
+        <input type="file" class="form-control" id="floatingImage" name="myImage" value="<%= data.filename%>">
         <label for="floatingInput">Image</label>
     </div>
 
     <div class="checkbox mb-3">
       
     </div>
-    <button class="w-50 btn btn-lg btn-primary" type="submit"> Update info</button>
+    <button id="updateButton" class="w-50 btn btn-lg btn-primary" type="submit"> Update info</button>
     
     <p class="mt-3 mb-3 text-muted">&copy; TourDeBandarban</p>
   </form>
 </main>
+
+<script>
+  // Function to show the custom confirmation box
+  function showConfirmation(message) {
+    return window.confirm(message);
+  }
+
+  // Function to show the custom alert message
+  function showAlert(message) {
+    alert(message);
+  }
+
+  // When the "Update Info" button is clicked
+  document.getElementById('updateButton').addEventListener('click', async () => {
+    const jhoomData = {
+      nid: document.getElementById('floatingInput').value,
+      name: document.getElementById('floatingName').value,
+      location: document.getElementById('floatingLocation').value,
+      capacity: document.getElementById('floatingCapacity').value,
+      room: document.getElementById('floatingRoom').value,
+      phone: document.getElementById('floatingPhone').value,
+      myImage: document.getElementById('floatingImage').value
+    };
+
+    const confirmationMessage = `Do you want to update the guide information?\n\nNID: ${jhoomData.nid}\nName: ${jhoomData.name}\nLocation: ${jhoomData.location}\nCapacity: ${jhoomData.capacity}\nRoom: ${jhoomData.room}\nPhone: ${jhoomData.phone}\nImage: ${jhoomData.myImage}`;
+    const isConfirmed = showConfirmation(confirmationMessage);
+
+    if (isConfirmed) {
+      try {
+        const formData = new FormData(document.getElementById('jhoomForm'));
+        const response = await fetch("/jhoomRegister", {
+          method: "POST",
+          body: formData,
+        });
+
+        if (response.ok) {
+          showAlert("Jhoom information updated successfully!");
+          // Refresh the page to show updated data
+          location.reload();
+        } else {
+          showAlert("Failed to update the jhoom information.");
+        }
+      } catch (err) {
+        showAlert("An error occurred while updating the jhoom information.");
+        console.error(err);
+      }
+    }else {
+      showAlert("Jhoom Registration is canceled."); 
+    }
+  });
+</script>
+
 
 
     
