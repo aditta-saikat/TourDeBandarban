@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 //mongodb+srv://aditta_saikat:penguin007@cluster0.2jxyc6x.mongodb.net/?retryWrites=true&w=majority/tms
 //mongodb://127.0.0.1:27017/tms
-mongoose.connect("mongodb+srv://aditta_saikat:penguin007@cluster0.2jxyc6x.mongodb.net/?retryWrites=true&w=majority/tms" , { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect("mongodb+srv://aditta_saikat:penguin007@cluster0.2jxyc6x.mongodb.net/test?retryWrites=true&w=majority" , { useNewUrlParser: true, useUnifiedTopology: true })
 .then(()=>{
     console.log("Mongodb connected!");
 })
